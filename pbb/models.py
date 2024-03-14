@@ -320,10 +320,10 @@ class ProbLinear(nn.Module):
         else:
             raise RuntimeError(f'Wrong prior_dist {prior_dist}')
 
-        self.bias = dist(bias_mu_init.clone(),
-                         bias_rho_init.clone(), device=device, fixed=False)
         self.weight = dist(weights_mu_init.clone(),
                            weights_rho_init.clone(), device=device, fixed=False)
+        self.bias = dist(bias_mu_init.clone(),
+                         bias_rho_init.clone(), device=device, fixed=False)
         self.weight_prior = dist(
             weights_mu_prior.clone(), weights_rho_init.clone(), device=device, fixed=True)
         self.bias_prior = dist(
